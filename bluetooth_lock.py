@@ -65,15 +65,11 @@ class UnLock():
                 self.swipe_num +=1
                 print(("第{}次滑动").format(self.swipe_num))
                 # 滑动到第五次时，就点击手机屏幕上第二个“立即开锁”按钮
-                if self.swipe_num==4:
+                if self.swipe_num==14:
                     self.unlock_click(1)
                     sleep(30)
-                    # self.unlock_click(3)
-                    # sleep(20)
-                    # 因为向下滑操作不成功
+                    # 向下滑动
                     self.l.swipe_down()
-                    # 所以重新打开app
-                    #self.l = self.open_app()
                     self.swipe_num = 0
 
                 return succ_num

@@ -18,7 +18,7 @@ fail_num = 0  # 开锁失败次数
 for t in range(count_num):
     actual_count_num += 1
     try:
-        unlock_text = base.find_element(By.XPATH, "//*[@text='立即开锁']")
+        unlock_text = base.wait_find_element(By.XPATH, "//*[@text='立即开锁']")
         unlock_text.click()
         succ_num += 1
         print("第{}次成功开锁".format(succ_num))
@@ -27,11 +27,11 @@ for t in range(count_num):
         sleep(5)
         # confirm_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.Button"
         # confirm_btn = base.find_element(By.XPATH, confirm_btn_xpath)
-        confirm_btn = base.find_element(By.XPATH, "//*[@text='确定']")
+        confirm_btn = base.wait_find_element(By.XPATH, "//*[@text='确定']")
         confirm_btn.click()
         print("点击‘确定’成功")
         sleep(5)
-        unlock_text = base.find_element(By.XPATH, "//*[@text='立即开锁']")
+        unlock_text = base.wait_find_element(By.XPATH, "//*[@text='立即开锁']")
         unlock_text.click()
         fail_num += 1
         print("第{}次开锁失败".format(fail_num))
