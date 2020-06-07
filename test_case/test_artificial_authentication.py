@@ -1,3 +1,7 @@
+"""
+人工认证
+"""
+
 import pytest
 import os
 from public.po.artificial_authentication_page import ArtificialAuthenticationPage

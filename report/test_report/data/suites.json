@@ -7,7 +7,7 @@
       "name" : "TestNewRoom",
       "children" : [ {
         "name" : "test_new_room",
-        "uid" : "25c5956569e017d",
+        "uid" : "5fd59b921935fa25",
         "parentUid" : "f7cc170dd6beeaebcdad4b2a9ca537c9",
         "status" : "broken",
         "time" : {
@@ -30,7 +30,7 @@
         "name" : "TestNewRoom",
         "children" : [ {
           "name" : "test_new_room",
-          "uid" : "631bc3aff8efa218",
+          "uid" : "a2b2128a5d575567",
           "parentUid" : "71d5e6e2b0e3ba80e5c0f8072d98a821",
           "status" : "passed",
           "time" : {

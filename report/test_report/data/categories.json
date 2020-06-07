@@ -7,7 +7,7 @@
       "name" : "TypeError: argument of type 'int' is not iterable",
       "children" : [ {
         "name" : "test_new_room",
-        "uid" : "25c5956569e017d",
+        "uid" : "5fd59b921935fa25",
         "parentUid" : "383e294e45c0a9d8c85cc6eba2340c67",
         "status" : "broken",
         "time" : {

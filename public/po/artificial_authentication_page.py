@@ -16,7 +16,7 @@ import logging
 from log.log import logger
 from public.common.desired_caps import desired
 from public.common.do_excel import ReadExcel
-from public.po.login_page import LoginPage
+# from public.po.login_page import LoginPage
 from public.common.adb_shell import AdbShell
 from public.po.new_order_page import NewOderPage
 
@@ -25,21 +25,21 @@ logger = logger(__name__, Cmdlevel=logging.INFO, Filelevel=logging.INFO)
 
 class ArtificialAuthenticationPage(BaseView):
     # “全部订单”按钮xpath
-    all_order_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[6]"
+    all_order_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[5]"
     # 订单列表第一个
     order_list_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View"
     # 人工认证按钮
     artificial_authentication_btn = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View/android.view.View[3]/android.widget.Button"
     # "选择名族"按钮xpath
-    choose_ethnic_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]"
+    choose_ethnic_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.Button"
     # 名族名称（第一个）xpath
-    ethnic_name_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[1]"
+    ethnic_name_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]"
     # 证件号xpath
-    id_number_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[3]"
+    id_number_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[3]"
     # 住址xpath
-    address_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[4]"
+    address_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.widget.EditText[4]"
     # 确定按钮
-    confirm_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[4]/android.widget.Button"
+    confirm_btn_xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[3]/android.widget.Button"
 
     all_order_btn_element = (By.XPATH , all_order_btn_xpath) # 全部订单按钮元素
     order_list_element = (By.XPATH , order_list_xpath)  # 订单列表中的第一个订单
@@ -101,15 +101,16 @@ class ArtificialAuthenticationPage(BaseView):
         try:
             NewOder = NewOderPage(self.driver)
             NewOder.oder_management()
-            NewOder.choose_shop()
+            # NewOder.choose_shop()
             self.all_order_btn()
             self.order_list()
             self.artificial_authentication_btn()
-            self.choose_ethnic_btn()
+            # self.choose_ethnic_btn()
             id_number_value = ReadExcel("artificial_authentication.xlsx", "Sheet1").read_excel(1, 0)
-            self.id_number_input_box(id_number_value)
             address_value = ReadExcel("artificial_authentication.xlsx", "Sheet1").read_excel(1, 1)
+            print(id_number_value)
             print(address_value)
+            self.id_number_input_box(id_number_value)
             self.address_input_box(address_value)
             self.confirm_btn()
             return "人工认证成功"
@@ -120,11 +121,8 @@ class ArtificialAuthenticationPage(BaseView):
 
 if __name__ == '__main__':
     driver = desired()
-    App = LoginPage(driver)
-    App.login()
-    # NewOder = NewOderPage(driver)
-    # NewOder.oder_management()
-    # NewOder.choose_shop()
-    AA = ArtificialAuthentication(driver)
+    NewOder = NewOderPage(driver)
+    NewOder.oder_management()
+    AA = ArtificialAuthenticationPage(driver)
     AA.artificial_authentication_Process()
 

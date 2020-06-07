@@ -27,8 +27,8 @@ def app_login():
     print('登陆')
     with allure.step('登陆'):#给报告里面加步骤提示
         driver = desired()
-        App = LoginPage(driver)
-        App.login()
+        # App = LoginPage(driver)
+        # App.login()
     yield driver
     driver.close_app()
     print("\n关闭应用")
