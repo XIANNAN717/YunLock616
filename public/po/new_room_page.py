@@ -108,8 +108,6 @@ class NewRoomPage(BaseView):
 
 if __name__ == '__main__':
     driver = desired()
-    App = LoginPage(driver)
-    App.login()
     YunLock_new_room = NewRoomPage(driver)
     YunLock_new_room.new_room()
 

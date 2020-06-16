@@ -86,8 +86,6 @@ class NewShopPage(BaseView):
 
 if __name__ == '__main__':
     driver = desired()
-    App = LoginPage(driver)
-    App.login()
     YunLock_new_shop = NewShopPage(driver)
     YunLock_new_shop.new_shop()
 

@@ -37,6 +37,6 @@ class PictureRecognition(object):
 
 
 if __name__ == '__main__':
-    a = PictureRecognition.matchImg(r'E:\py\YunLock\data/image/your_fenzu1\quxiao.png',
-                                    r'E:\py\YunLock\test_case\55cadaac-a1bc-11ea-bf4a-1c1b0dc957a8screen_all.png')
+    a = PictureRecognition.matchImg(r'F:\YunLock\data\quxiao.png',
+                                    r'F:\YunLock\data\55cadaac-a1bc-11ea-bf4a-1c1b0dc957a8screen_all.png')
     print(a)

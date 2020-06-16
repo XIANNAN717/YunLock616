@@ -64,9 +64,9 @@ class UnLock():
                 # 每滑动一次，就在原来的基础上+1
                 self.swipe_num +=1
                 print(("第{}次滑动").format(self.swipe_num))
-                # 滑动到第五次时，就点击手机屏幕上第二个“立即开锁”按钮
+                # 滑动到第14次时，就点击手机屏幕上第二个“立即开锁”按钮
                 if self.swipe_num==14:
-                    self.unlock_click(1)
+                    self.unlock_click(2)
                     sleep(30)
                     # 向下滑动
                     self.l.swipe_down()

@@ -164,7 +164,5 @@ class NewOderPage(BaseView):
 
 if __name__ == '__main__':
     driver = desired()
-    App = LoginPage(driver)
-    App.login()
     YunLock_new_order = NewOderPage(driver)
     YunLock_new_order.new_order()
