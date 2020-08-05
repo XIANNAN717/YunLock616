@@ -1,25 +1,22 @@
 # -*- coding: gb18030 -*-
 # -*- coding: utf-8 -*-
-from appium import webdriver
+from selenium import webdriver
 from time import sleep
 
-ServerUrl = 'http://127.0.0.1:4723/wd/hub'
+driver = webdriver.Chrome()
+url = "http://jira.upqing.com/secure/Dashboard.jspa"
+driver.get(url)
 
+driver.find_element_by_id("login-form-username").send_keys("596609597")
+driver.find_element_by_id("login-form-password").send_keys("en=BK7K-")
+driver.find_element_by_xpath("//*[@id='login']").click()
 
-desired_caps = {
-    'noReset': True,  # 驱动APP，不要清除app里的原有的数据
-    'fullReset' : False,
-    'platformName': 'Android',
-    'platformVersion': '8.0',
-    'unicodeKeyboard': True,  # 使用Unicode输入法
-    'resetKeyboard': True,  # 重置输入法到初始状态
-    'deviceName': 'WTKDU16C07002694',
-    'appPackage': 'com.tencent.mm',
-    'appActivity': '.ui.LauncherUI',
-}
-driver = webdriver.Remote(ServerUrl, desired_caps)
-
-sleep(3)
-driver.find_element_by_id("com.tencent.mm:id/e3x").click()
-sleep(3)
-driver.find_element_by_id("com.tencent.mm:id/al_").send_keys(u"你好")
+main_handle = driver.current_window_handle #当前窗口句柄
+all_handles = driver.window_handles #所有窗口句柄
+sleep(2)
+print(main_handle)
+print(all_handles)
+if len(all_handles)>1:
+    for main_handle in all_handles:
+        if main_handle != "CDwindow":
+            driver.switch_to.window(main_handle)

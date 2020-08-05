@@ -29,4 +29,3 @@ if __name__ == '__main__':
 
     value = read_config.getConfigValue("project","project_path")
     print(value)
-

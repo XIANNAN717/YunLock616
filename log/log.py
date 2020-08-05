@@ -62,4 +62,3 @@ if __name__ == '__main__':
     logger.war("warning message")
     logger.error("error message")
     logger.cri("critical message")
-
